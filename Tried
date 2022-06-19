@@ -1,0 +1,23 @@
+class Solution {
+    public int maxProduct(int[] nums) {        
+        int a = 1;
+        int b = Integer.MIN_VALUE;
+        for( int i = 0; i < nums.length; i++){
+            a = a * nums[i];
+            b = Math.max(a,b);
+            if (a == 0)
+                a = 1;
+        }
+        a = 1;
+        for( int i = nums.length - 1; i >= 0; i--){
+            a = a * nums[i];
+            b = Math.max(a,b);
+            if (a == 0)
+                a = 1;
+        }
+        return b;
+    }
+}
+/* The logic is that THE MAXIMUM PRODUCT SUBARRAY will always be either 
+starting from the END (This may include the whole array including 
+START and END ). It will never be in the middle.*/
